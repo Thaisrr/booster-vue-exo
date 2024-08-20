@@ -17,6 +17,9 @@
     <li>
       <RouterLink to="./secret">Message Secret</RouterLink>
     </li>
+    <li>
+      <RouterLink to="./contact">Contact</RouterLink>
+    </li>
   </ul>
 </nav>
 </template>
