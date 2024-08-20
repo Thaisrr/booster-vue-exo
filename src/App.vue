@@ -1,13 +1,10 @@
 <script setup>
-import CounterComponent from "@/components/CounterComponent.vue";
-import ListeComponent from "@/components/ListeComponent.vue";
-import ListeFilm from "@/components/ListeFilm.vue";
+import MyNav from "@/components/MyNav.vue";
 </script>
 
 <template>
-  <CounterComponent />
-  <ListeComponent />
-  <ListeFilm />
+  <MyNav />
+  <RouterView/>
 </template>
 
 <style></style>
