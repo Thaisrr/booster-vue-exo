@@ -1,7 +1,6 @@
 <script setup>
 
 // import {Field, Form} from "vee-validate";
-import {ref} from "vue";
 
 const emit = defineEmits(['add'])
 
