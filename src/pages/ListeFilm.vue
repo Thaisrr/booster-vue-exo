@@ -1,5 +1,5 @@
 <script setup>
-import {ref} from "vue";
+import {computed, ref} from "vue";
 
 const movies = ref([
   {
@@ -14,9 +14,26 @@ const movies = ref([
   }
 ]);
 
+const filter = ref(''); // seen || not seen
+
+function changeFilter(newValue) {
+  filter.value = newValue;
+}
+
 function toggleWatched(movie) {
   movie.isWatched = !movie.isWatched;
 }
+
+const filteredMovies = computed(() => {
+  switch (filter.value) {
+    case 'not-seen':
+        return movies.value.filter(f => !f.isWatched);
+    case 'seen':
+      return movies.value.filter(f => f.isWatched)
+    default:
+        return movies.value;
+  }
+})
 
 </script>
 
@@ -24,7 +41,12 @@ function toggleWatched(movie) {
 <h1>Mes Films</h1>
 
   <div class="grid">
-    <article v-for="movie in movies" v-bind:key="movie.title">
+    <div>
+      <button @click="changeFilter('')">Tous</button>
+      <button @click="changeFilter('seen')">Vus</button>
+      <button @click="changeFilter('not-seen')">Pas Vus</button>
+    </div>
+    <article v-for="movie in filteredMovies" v-bind:key="movie.title">
       <img v-bind:src="movie.image" v-bind:alt="movie.title">
       <h3>{{movie.title}}</h3>
       <p v-show="movie.isWatched">Vu !</p>
