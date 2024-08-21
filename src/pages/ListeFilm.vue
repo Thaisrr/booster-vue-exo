@@ -1,5 +1,6 @@
 <script setup>
 import {computed, ref} from "vue";
+import MovieCard from "@/components/MovieCard.vue";
 
 const movies = ref([
   {
@@ -20,9 +21,6 @@ function changeFilter(newValue) {
   filter.value = newValue;
 }
 
-function toggleWatched(movie) {
-  movie.isWatched = !movie.isWatched;
-}
 
 const filteredMovies = computed(() => {
   switch (filter.value) {
@@ -46,14 +44,11 @@ const filteredMovies = computed(() => {
       <button @click="changeFilter('seen')">Vus</button>
       <button @click="changeFilter('not-seen')">Pas Vus</button>
     </div>
-    <article v-for="movie in filteredMovies" v-bind:key="movie.title">
-      <img v-bind:src="movie.image" v-bind:alt="movie.title">
-      <h3>{{movie.title}}</h3>
-      <p v-show="movie.isWatched">Vu !</p>
-      <button @click="toggleWatched(movie)">
-        {{movie.isWatched ? 'Marquer comme pas vu' : 'Marquer comme vu'}}
-      </button>
-    </article>
+    <MovieCard
+        v-for="movie in filteredMovies"
+        v-bind:key="movie.title"
+        v-bind:movie="movie"
+    />
   </div>
 
 </template>
@@ -65,17 +60,5 @@ const filteredMovies = computed(() => {
   gap: 40px;
 }
 
-article {
-  overflow: hidden;
-  padding: 10px;
-  border-radius: 10px;
-  box-shadow: 2px 2px 5px rgba(128, 128, 128, 0.55);
-}
 
-
-
-article img {
-  width: 100%;
-  border-radius: 5px;
-}
 </style>
