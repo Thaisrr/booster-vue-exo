@@ -1,6 +1,7 @@
 <script setup>
 import {computed, ref} from "vue";
 import MovieCard from "@/components/MovieCard.vue";
+import AddMovie from "@/components/AddMovie.vue";
 
 const movies = ref([
   {
@@ -31,12 +32,23 @@ const filteredMovies = computed(() => {
     default:
         return movies.value;
   }
-})
+});
+
+function handleRemove(movie) {
+  const i = movies.value.indexOf(movie);
+  movies.value.splice(i, 1);
+}
+
+function handleAdd(movie) {
+  movies.value.push(movie);
+}
 
 </script>
 
 <template>
 <h1>Mes Films</h1>
+
+  <AddMovie @add="handleAdd" />
 
   <div class="grid">
     <div>
@@ -48,6 +60,7 @@ const filteredMovies = computed(() => {
         v-for="movie in filteredMovies"
         v-bind:key="movie.title"
         v-bind:movie="movie"
+        @remove="handleRemove"
     />
   </div>
 

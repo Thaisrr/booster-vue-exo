@@ -19,6 +19,7 @@ function toggleWatched(movie) {
     <button @click="toggleWatched(movie)">
       {{movie.isWatched ? 'Marquer comme pas vu' : 'Marquer comme vu'}}
     </button>
+    <button @click="$emit('remove', movie)">Supprimer</button>
   </article>
 </template>
 
