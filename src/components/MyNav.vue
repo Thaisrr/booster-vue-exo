@@ -26,6 +26,9 @@
     <li>
       <RouterLink to="./login">Login</RouterLink>
     </li>
+    <li>
+      <RouterLink to="./joke">Jokes</RouterLink>
+    </li>
   </ul>
 </nav>
 </template>

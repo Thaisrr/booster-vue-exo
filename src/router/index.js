@@ -6,6 +6,7 @@ import SecretMessage from "@/pages/SecretMessage.vue";
 import ContactForm from "@/pages/ContactForm.vue";
 import HomeComponent from "@/pages/HomeComponent.vue";
 import LoginComponent from "@/pages/LoginComponent.vue";
+import JokeComponent from "@/pages/JokeComponent.vue";
 
 const router = createRouter({
     history: createWebHistory(),
@@ -16,7 +17,8 @@ const router = createRouter({
         {path: '/movies', component: ListeFilm},
         {path: '/secret', component: SecretMessage},
         {path: '/contact', component: ContactForm},
-        {path: '/login', component: LoginComponent}
+        {path: '/login', component: LoginComponent},
+        {path: '/joke', component: JokeComponent}
     ]
 });
 
